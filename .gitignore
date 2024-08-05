@@ -1,0 +1,77 @@
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+*.cache
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+# NuGet
+*.nupkg
+*.snupkg
+packages/
+# Uncomment if necessary however generally it will be regenerated when needed
+#*.nuget
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# MSTest test Results
+[Tt]est[Rr]esult*
+[Bb]uild[Ll]og.*
+
+# NUnit
+*.VisualState.xml
+TestResult.xml
+
+# Build results of an ATL project
+[Dd]ebugPS/
+[Dd]ebugPS2/
+[Rr]eleasePS/
+[Rr]eleasePS2/
+dlldata.c
+
+# LightSwitch generated files
+GeneratedArtifacts/
+_Pvt_Extensions/
+ModelManifest.xml
+
+# Windows Store app package directory
+AppPackages/
+BundleArtifacts/
+Package.StoreAssociation.xml
+Package.StoreAssociation.xml.signed
+
+# Windows Phone
+# Generated files
+Bin/
+Obj/
+TestResults/
+
+# RIA/Silverlight projects
+Generated_Code/
+ClientBin/
