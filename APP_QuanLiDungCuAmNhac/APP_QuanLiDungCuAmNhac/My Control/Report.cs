@@ -31,7 +31,7 @@ namespace APP_QuanLiDungCuAmNhac.My_Control
         private void Report_Load(object sender, EventArgs e)
         {
             // Thiết lập đường dẫn đến file RDLC
-            string reportPath = "C:\\Users\\ACCER\\Downloads\\APP_QuanLiDungCuAmNhac\\APP_QuanLiDungCuAmNhac\\My Control\\MyReport.rdlc";
+            string reportPath = "D:\\HK 7\\PhatTrienPhanMemThongMinh\\APP_QLDCAN\\APP_QuanLiDungCuAmNhac\\APP_QuanLiDungCuAmNhac\\My Control\\MyReport.rdlc";
             if (!System.IO.File.Exists(reportPath))
             {
                 MessageBox.Show("File báo cáo không tồn tại: " + reportPath, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -44,7 +44,7 @@ namespace APP_QuanLiDungCuAmNhac.My_Control
         private void reportViewer1_Load(object sender, EventArgs e)
         {
             // Thiết lập lại đường dẫn đến file RDLC
-            string reportPath = "C:\\Users\\ACCER\\Downloads\\APP_QuanLiDungCuAmNhac\\APP_QuanLiDungCuAmNhac\\My Control\\MyReport.rdlc";
+            string reportPath = "D:\\HK 7\\PhatTrienPhanMemThongMinh\\APP_QLDCAN\\APP_QuanLiDungCuAmNhac\\APP_QuanLiDungCuAmNhac\\My Control\\MyReport.rdlc";
             if (!File.Exists(reportPath))
             {
                 MessageBox.Show("File báo cáo không tồn tại: " + reportPath, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -46,6 +46,10 @@ namespace DAL
         {
             return qldc.SanPhams.Where(sp => sp.MaLoai == maLoai).ToList<SanPham>();
         }
+        public List<SanPham> LoadSPTheoTen(string tenSP)
+        {
+            return qldc.SanPhams.Where(sp => sp.TenSP.Contains(tenSP)).ToList<SanPham>();
+        }
         public List<SanPham> LoadSPTheoTH(int maTH)
         {
             return qldc.SanPhams.Where(sp => sp.MaTH == maTH).ToList<SanPham>();

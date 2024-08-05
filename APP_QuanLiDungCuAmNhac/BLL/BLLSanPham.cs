@@ -46,6 +46,10 @@ namespace BLL
         {
             return SanPhamDAL.LoadSPTheoLoai(maLoai);
         }
+        public List<SanPham> LoadSPTheoTen(string tenSP)
+        {
+            return SanPhamDAL.LoadSPTheoTen(tenSP);
+        }
         public void AddSanPham(string tenSP, decimal donGia, int soLuong, string hinhAnh, string moTa, int maLoai, int maThuongHieu, int trangThai)
         {
             var product = new SanPham

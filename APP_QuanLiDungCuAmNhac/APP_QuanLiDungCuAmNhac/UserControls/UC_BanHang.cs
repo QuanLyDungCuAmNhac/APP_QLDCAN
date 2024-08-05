@@ -149,6 +149,42 @@ namespace APP_QuanLiDungCuAmNhac.UserControls
                 }
             }
         }
+        public void LoadSanPhamTheoTen(string TenSP)
+        {
+            flowLayoutPanel1.Controls.Clear();
+            var products = bllsp.LoadSP();
+            if (TenSP != null)
+            {
+                products = bllsp.LoadSPTheoTen(TenSP);
+            }
+            else
+            {
+                products = bllsp.LoadSP();
+            }
+            var cloudinary = new Cloudinary(new Account(
+            "deuokbfws",
+            "248837377936324",
+            "KVCmXwtnx9zLnRet4SzN_Lee9xY"));
+
+            foreach (var product in products)
+            {
+                if (product.HinhAnh != null)
+                {
+                    var imageUrl = cloudinary.Api.UrlImgUp.BuildUrl(product.HinhAnh.Trim());
+                    // Sử dụng `imageUrl` trong logic của bạn
+
+
+                    var sanPhamControl = new My_Control.SanPham
+                    {
+                        TenSP = product.TenSP,
+                        Price = product.DonGia.ToString(),
+                        ImageUrl = imageUrl,
+                    };
+                    sanPhamControl.Click += (s, e) => OnProductClick(product);
+                    flowLayoutPanel1.Controls.Add(sanPhamControl);
+                }
+            }
+        }
         private void UpdateTongTien()
         {
             decimal totalAmount = 0;
@@ -322,6 +358,11 @@ namespace APP_QuanLiDungCuAmNhac.UserControls
                 UpdateTongTien();
 
             }
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadSanPhamTheoTen(textBox1.Text);
         }
     }
 

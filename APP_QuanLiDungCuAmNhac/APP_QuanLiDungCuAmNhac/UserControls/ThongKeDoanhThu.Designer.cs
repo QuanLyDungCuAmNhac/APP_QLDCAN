@@ -34,12 +34,14 @@
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             this.chartDoanhThu = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.cbbNam = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.guna2Panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).BeginInit();
             this.SuspendLayout();
             // 
             // guna2Panel1
             // 
+            this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.chartDoanhThu);
             this.guna2Panel1.Controls.Add(this.cbbNam);
             this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -74,10 +76,20 @@
             this.cbbNam.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.cbbNam.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
             this.cbbNam.ItemHeight = 30;
-            this.cbbNam.Location = new System.Drawing.Point(52, 63);
+            this.cbbNam.Location = new System.Drawing.Point(186, 79);
             this.cbbNam.Name = "cbbNam";
-            this.cbbNam.Size = new System.Drawing.Size(325, 36);
+            this.cbbNam.Size = new System.Drawing.Size(184, 36);
             this.cbbNam.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(114, 87);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 28);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "Năm";
             // 
             // ThongKeDoanhThu
             // 
@@ -87,6 +99,7 @@
             this.Name = "ThongKeDoanhThu";
             this.Size = new System.Drawing.Size(1033, 662);
             this.guna2Panel1.ResumeLayout(false);
+            this.guna2Panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartDoanhThu)).EndInit();
             this.ResumeLayout(false);
 
@@ -97,5 +110,6 @@
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
         private Guna.UI2.WinForms.Guna2ComboBox cbbNam;
         private System.Windows.Forms.DataVisualization.Charting.Chart chartDoanhThu;
+        private System.Windows.Forms.Label label1;
     }
 }
