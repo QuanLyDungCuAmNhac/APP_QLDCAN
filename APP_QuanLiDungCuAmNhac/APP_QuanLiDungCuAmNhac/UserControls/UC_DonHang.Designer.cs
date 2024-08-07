@@ -48,6 +48,9 @@
             this.TongTien = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.HinhThucThanhToan = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaNV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnXuatFIle = new Guna.UI2.WinForms.Guna2Button();
+            this.cbbTinhTrang = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datagridviewHoaDon)).BeginInit();
@@ -55,6 +58,9 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.cbbTinhTrang);
+            this.panel1.Controls.Add(this.btnXuatFIle);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txtMaKH);
@@ -71,7 +77,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(190, 83);
+            this.label2.Location = new System.Drawing.Point(29, 83);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(153, 28);
             this.label2.TabIndex = 8;
@@ -81,7 +87,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(190, 33);
+            this.label1.Location = new System.Drawing.Point(29, 33);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(122, 28);
             this.label1.TabIndex = 7;
@@ -99,8 +105,8 @@
             this.txtMaKH.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMaKH.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMaKH.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaKH.Location = new System.Drawing.Point(375, 74);
-            this.txtMaKH.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaKH.Location = new System.Drawing.Point(214, 74);
+            this.txtMaKH.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaKH.Name = "txtMaKH";
             this.txtMaKH.PasswordChar = '\0';
             this.txtMaKH.PlaceholderText = "";
@@ -120,8 +126,8 @@
             this.txtMaHD.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtMaHD.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtMaHD.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtMaHD.Location = new System.Drawing.Point(375, 26);
-            this.txtMaHD.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtMaHD.Location = new System.Drawing.Point(214, 26);
+            this.txtMaHD.Margin = new System.Windows.Forms.Padding(4);
             this.txtMaHD.Name = "txtMaHD";
             this.txtMaHD.PasswordChar = '\0';
             this.txtMaHD.PlaceholderText = "";
@@ -297,6 +303,50 @@
             this.MaNV.Name = "MaNV";
             this.MaNV.Width = 129;
             // 
+            // btnXuatFIle
+            // 
+            this.btnXuatFIle.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnXuatFIle.BorderRadius = 10;
+            this.btnXuatFIle.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btnXuatFIle.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btnXuatFIle.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btnXuatFIle.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btnXuatFIle.FillColor = System.Drawing.Color.DarkSlateBlue;
+            this.btnXuatFIle.Font = new System.Drawing.Font("Segoe UI Emoji", 12F, System.Drawing.FontStyle.Bold);
+            this.btnXuatFIle.ForeColor = System.Drawing.Color.White;
+            this.btnXuatFIle.Location = new System.Drawing.Point(840, 33);
+            this.btnXuatFIle.Name = "btnXuatFIle";
+            this.btnXuatFIle.Size = new System.Drawing.Size(234, 78);
+            this.btnXuatFIle.TabIndex = 9;
+            this.btnXuatFIle.Text = "Xuất file Excel";
+            this.btnXuatFIle.Click += new System.EventHandler(this.btnXuatFIle_Click);
+            // 
+            // cbbTinhTrang
+            // 
+            this.cbbTinhTrang.BackColor = System.Drawing.Color.Transparent;
+            this.cbbTinhTrang.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.cbbTinhTrang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbbTinhTrang.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbTinhTrang.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.cbbTinhTrang.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.cbbTinhTrang.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.cbbTinhTrang.ItemHeight = 30;
+            this.cbbTinhTrang.Location = new System.Drawing.Point(508, 77);
+            this.cbbTinhTrang.Name = "cbbTinhTrang";
+            this.cbbTinhTrang.Size = new System.Drawing.Size(263, 36);
+            this.cbbTinhTrang.TabIndex = 10;
+            this.cbbTinhTrang.SelectedIndexChanged += new System.EventHandler(this.cbbTinhTrang_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(503, 38);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(106, 28);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Tình trạng";
+            // 
             // UC_DonHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -332,5 +382,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn TongTien;
         private System.Windows.Forms.DataGridViewTextBoxColumn HinhThucThanhToan;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaNV;
+        private Guna.UI2.WinForms.Guna2Button btnXuatFIle;
+        private System.Windows.Forms.Label label3;
+        private Guna.UI2.WinForms.Guna2ComboBox cbbTinhTrang;
     }
 }

@@ -31,18 +31,19 @@ namespace DAL
                 throw new Exception("Hóa đơn không tồn tại.");
             }
         }
-        public List<HoaDon> FilterHD(int? maHD, int? maKH)
+        public List<HoaDon> FilterHD(int? maHD, int? maKH, string tinhTrang)
         {
             var allHoaDons = LoadHD(); // Lấy tất cả hóa đơn
 
-           
             var filteredHoaDons = allHoaDons.Where(hd =>
                 (!maHD.HasValue || hd.MaHD == maHD.Value) &&
-                (!maKH.HasValue || hd.MaKH == maKH.Value)
+                (!maKH.HasValue || hd.MaKH == maKH.Value) &&
+                (string.IsNullOrEmpty(tinhTrang) || hd.TinhTrang == tinhTrang)
             ).ToList();
 
             return filteredHoaDons;
         }
+
         public int SaveHoaDon(HoaDon hoaDon)
         {
 

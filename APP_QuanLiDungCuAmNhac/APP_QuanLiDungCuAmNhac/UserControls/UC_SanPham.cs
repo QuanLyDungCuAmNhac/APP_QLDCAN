@@ -33,23 +33,7 @@ namespace APP_QuanLiDungCuAmNhac.UserControls
         {
 
         }
-        public void LoadCBBLoai()
-        {
-            var LoaiList = bll_loai.LoadLoai();
-            LoaiList.Insert(0, new LoaiSP { MaLoai = -1, TenLoai = "Tất cả loại" });
-            cbbLoai.DataSource = LoaiList;
-            cbbLoai.DisplayMember = "TenLoai";
-            cbbLoai.ValueMember = "MaLoai";
-        }
-
-        public void LoadCBBThuongHieu()
-        {
-            var LoaiList = bll_thuongHieu.LoadTH();
-            LoaiList.Insert(0, new ThuongHieu { MaTH = -1, TenTH = "Tất cả thương hiệu" });
-            cbbThuongHieu.DataSource = LoaiList;
-            cbbThuongHieu.DisplayMember = "TenTH";
-            cbbThuongHieu.ValueMember = "MaTH";
-        }
+       
 
         private async void UC_SanPham_Load(object sender, EventArgs e)
         {
@@ -57,8 +41,7 @@ namespace APP_QuanLiDungCuAmNhac.UserControls
             dataGridViewSanPham.AutoGenerateColumns = false;
 
             await LoadSanPhamAsync();
-            LoadCBBLoai();
-            LoadCBBThuongHieu();
+           
         }
         public async Task LoadSanPhamAsync()
         {
@@ -204,28 +187,59 @@ namespace APP_QuanLiDungCuAmNhac.UserControls
 
         private void guna2ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbbLoai.SelectedIndex != 0)
-            {
-                int MaLoai = int.Parse(cbbLoai.SelectedValue.ToString());
-                dataGridViewSanPham.DataSource = bll_sp.LoadSPTheoLoai(MaLoai);
-            }
-            else
-            {
-                
-            }
+            
         }
 
         private void cbbThuongHieu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (cbbThuongHieu.SelectedIndex != 0)
+           
+        }
+
+        private async void btnTim_Click(object sender, EventArgs e)
+        {
+            string TenSP = txtTenLoai.Text;
+
+            List<DTO.SanPham> products;
+
+            if (!string.IsNullOrEmpty(TenSP))
             {
-                int MaTH = int.Parse(cbbThuongHieu.SelectedValue.ToString());
-                dataGridViewSanPham.DataSource = bll_sp.LoadSPTheoTH(MaTH);
+                products = bll_sp.LoadSPTheoTen(TenSP);
             }
             else
             {
-                
+                products = bll_sp.LoadSP();
             }
+
+            dataGridViewSanPham.Rows.Clear();
+
+            foreach (var product in products)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                row.CreateCells(dataGridViewSanPham);
+
+                row.Cells[0].Value = product.MaSP;
+                row.Cells[1].Value = product.TenSP;
+                row.Cells[2].Value = product.DonGia;
+                row.Cells[3].Value = product.SoLuong;
+                row.Cells[4].Value = product.MoTa;
+                row.Cells[5].Value = product.MaLoai;
+                row.Cells[6].Value = product.MaTH;
+
+                var imageCell = (DataGridViewImageCell)row.Cells[7];
+                if (product.HinhAnh != null)
+                {
+                    string imageUrl = cloudinary.Api.UrlImgUp.BuildUrl(product.HinhAnh.Trim());
+                    await LoadImageAsync(imageUrl, imageCell);
+                }
+
+                row.Height = 100;
+                dataGridViewSanPham.Rows.Add(row);
+            }
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

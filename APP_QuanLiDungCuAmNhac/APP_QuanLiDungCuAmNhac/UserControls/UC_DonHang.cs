@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using BLL;
 using APP_QuanLiDungCuAmNhac.My_Control;
+using DTO;
 
 namespace APP_QuanLiDungCuAmNhac.UserControls
 {
@@ -28,6 +29,7 @@ namespace APP_QuanLiDungCuAmNhac.UserControls
 
         private void UC_DonHang_Load(object sender, EventArgs e)
         {
+            LoadCBBTinhTrang();
             datagridviewHoaDon.ColumnHeadersDefaultCellStyle.Font = new Font("Seogoe UI", 12, FontStyle.Bold);
             datagridviewHoaDon.AutoGenerateColumns = false;
 
@@ -116,9 +118,10 @@ namespace APP_QuanLiDungCuAmNhac.UserControls
         {
             int? maHD = string.IsNullOrEmpty(txtMaHD.Text.Trim()) ? (int?)null : int.Parse(txtMaHD.Text.Trim());
             int? maKH = string.IsNullOrEmpty(txtMaKH.Text.Trim()) ? (int?)null : int.Parse(txtMaKH.Text.Trim());
+            string TinhTrang  = cbbTinhTrang.SelectedValue.ToString();
 
             // Gọi phương thức lọc từ DAL
-            var filteredData = bllhd.FilterHD(maHD, maKH).Select(hd => new
+            var filteredData = bllhd.FilterHD(maHD, maKH,TinhTrang).Select(hd => new
             {
                 hd.MaHD,
                 TinhTrang = string.IsNullOrEmpty(hd.TinhTrang) ? "Chưa xác định" : hd.TinhTrang.Trim(),
@@ -158,6 +161,73 @@ namespace APP_QuanLiDungCuAmNhac.UserControls
             {
                 datagridviewHoaDon.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
+        }
+        public void LoadCBBTinhTrang()
+        {
+            var items = new List<TinhTrangItem>
+            {
+                new TinhTrangItem("",""),
+                new TinhTrangItem("Chờ xác nhận", "Chờ xác nhận"),
+                new TinhTrangItem("Đã xác nhận", "Đã xác nhận"),
+                new TinhTrangItem("Đang giao hàng", "Đang giao hàng"),
+                new TinhTrangItem("Mua thành công", "Mua thành công")
+            };
+            cbbTinhTrang.DataSource = items;
+            cbbTinhTrang.ValueMember = "Value";
+            cbbTinhTrang.DisplayMember = "Display";
+        }
+
+        private void btnXuatFIle_Click(object sender, EventArgs e)
+        {
+            if (datagridviewHoaDon.Rows.Count > 0)
+            {
+                try
+                {
+                    var excelApp = new Microsoft.Office.Interop.Excel.Application();
+                    var workbook = excelApp.Workbooks.Add(Type.Missing);
+                    var worksheet = (Microsoft.Office.Interop.Excel.Worksheet)workbook.Sheets[1];
+
+                    // Thêm tiêu đề cột
+                    for (int i = 1; i <= datagridviewHoaDon.Columns.Count - 1; i++)
+                    {
+                        worksheet.Cells[1, i] = datagridviewHoaDon.Columns[i - 1].HeaderText;
+                    }
+
+                    // Thêm dữ liệu vào Excel
+                    for (int i = 0; i < datagridviewHoaDon.Rows.Count; i++)
+                    {
+                        for (int j = 0; j < datagridviewHoaDon.Columns.Count - 1; j++)
+                        {
+                            var cellValue = datagridviewHoaDon.Rows[i].Cells[j].Value;
+                            worksheet.Cells[i + 2, j + 1] = cellValue != null ? cellValue.ToString() : string.Empty;
+                        }
+                    }
+
+                    // Tự động điều chỉnh kích thước cột và hàng
+                    worksheet.Columns.AutoFit();
+                    worksheet.Rows.AutoFit();
+
+                    // Định dạng phông chữ
+                    worksheet.Columns.Font.Size = 12;
+
+                    // Hiển thị Excel
+                    excelApp.Visible = true;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Error exporting to Excel: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("No records found!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void cbbTinhTrang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FilterDataGridView();
         }
     }
 }

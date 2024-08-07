@@ -15,9 +15,9 @@ namespace BLL
         {
             return dalHoaDon.LoadHD();
         }
-        public List<HoaDon> FilterHD(int? maHD, int? maKH)
+        public List<HoaDon> FilterHD(int? maHD, int? maKH, string tinhTrang)
         {
-            return dalHoaDon.FilterHD(maHD, maKH);
+            return dalHoaDon.FilterHD(maHD, maKH,tinhTrang);
         }
         public void UpdateTinhTrang(int maHD, string tinhTrangMoi)
         {
