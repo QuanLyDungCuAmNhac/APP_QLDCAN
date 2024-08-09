@@ -61,5 +61,10 @@ namespace APP_QuanLiDungCuAmNhac.Forms
                 
                 
         }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -66,6 +66,14 @@ namespace APP_QuanLiDungCuAmNhac.My_Control
 
         private async void btn_Luu_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(txt_DonGia.Text) || string.IsNullOrEmpty(txt_SoLuong.Text) || string.IsNullOrEmpty(txt_MoTa.Text)
+                || string.IsNullOrEmpty(cbo_MaLoai.SelectedValue.ToString()) || string.IsNullOrEmpty(txt_TrangThai.Text)
+                || string.IsNullOrEmpty(cbo_MaTH.SelectedValue.ToString()))
+            {
+                MessageBox.Show("Vui lòng điền đầy đủ công tin");
+                return;
+            }
+
             //  string maSP = txt_MaSP.Text;
             string tenSP = txt_TenSP.Text;
             decimal donGia = decimal.Parse(txt_DonGia.Text);
@@ -77,7 +85,7 @@ namespace APP_QuanLiDungCuAmNhac.My_Control
 
             // Upload image to Cloudinary
             bool uploadSuccess = await UploadImageToCloudinaryAsync(txt_Url.Text);
-
+            
             if (uploadSuccess)
             {
                 // Lưu tên hình ảnh vào database
